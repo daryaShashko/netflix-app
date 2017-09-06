@@ -1,19 +1,56 @@
+//const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-  entry: './src/client.js',
+
+  entry: {
+    home: './src/client.js',
+    styles: './src/home.less'
+  },
+
   output: {
     path: __dirname + "/public",
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
+
+  resolve: {
+    extensions: ['.js']
+  },
+
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+
+    rules: [{
+      test: /\.less$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', 'less-loader']
+      })
+    }, {
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          plugins: ["transform-react-jsx"]
+        }
       }
+    }
+
     ]
   },
-  resolve: {
-    extensions: ['.js', '.json']
-  }
-};
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Test',
+      hash: true,
+      template: './src/index.html'
+    }),
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      allChunks: true
+    })
+  ],
+  watch: true
+}
+;
