@@ -2,36 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-var shows;
 
-/*let url = 'https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage';
+let url = 'https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage';
 
 
- fetch(url)
+var shows = fetch(url)
  .then(res => res.json())
  .then((out) => {
- show = out;
- console.log('Checkout this JSON! ', show);
- return show;
+   console.log(out);
  })
  .catch(err => console.error(err));
 
- console.log(fetch(url));*/
+console.log(shows);
+
+
+ //console.log(fetch(url));
 /*
-$.getJSON("https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage", function (data) {
-  shows = data;
-
-  $.each( data, function( key, val ) {
-   items.push( "<li id='" + key + "'>" + val + "</li>" );
-   });
-
-   $( "<ul/>", {
-   "class": "my-new-list",
-   html: items.join( "" )
-   }).appendTo( "body" );
+var shows = $.getJSON("https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage", function (data) {
+  return jQuery.parseJSON(JSON.stringify(data));
 });
 
 console.log(shows);*/
+
 
 var media_shows = [
 
