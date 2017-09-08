@@ -1,22 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-
 let url = 'https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage';
-
-
+/*
 var shows = fetch(url)
  .then(res => res.json())
  .then((out) => {
-   console.log(out);
+  // console.log(out);
  })
  .catch(err => console.error(err));
 
-console.log(shows);
+console.log(shows);*/
+var data;
+
+function successListener() {
+  var data = JSON.parse(this.responseText);
+  console.log(data);
+}
+
+function failureListener(err) {
+  console.log('Request failed', err);
+}
+
+var request = new XMLHttpRequest();
+request.onload = successListener;
+request.onerror = failureListener;
+request.open('get', url , true);
+request.send();
 
 
- //console.log(fetch(url));
+ console.log(data);
 /*
 var shows = $.getJSON("https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage", function (data) {
   return jQuery.parseJSON(JSON.stringify(data));
