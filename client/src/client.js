@@ -257,9 +257,9 @@ var BriefMediaShow = React.createClass({
           </div>
 
           <header className="media-show__header">
-            <div className="media-show__title">{item.show_title}</div>
-            <div className="media-show__release-year">{item.release_year}</div>
-            <div className="media-show__category">{item.category}</div>
+            <h3 className="media-show__title">{item.show_title}</h3>
+            <span className="media-show__release-year">{item.release_year}</span>
+            <p className="media-show__category">{item.category}</p>
           </header>
 
         </div>
@@ -286,8 +286,6 @@ var App = React.createClass({
   }
 });
 
-console.log(media_shows)
-console.log(shows)
 
 ReactDOM.render(
   <App />,
