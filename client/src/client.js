@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var App = React.createClass({
-  render: function () {
+class App extends React.Component {
+  render() {
     return (
-     <p>Hello World</p>
+      <p>Hello World</p>
     )
   }
-});
+}
 
 
 ReactDOM.render(
