@@ -1,44 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Film from './components/Film';
 
 let url = 'https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage';
 /*
-var shows = fetch(url)
+ var shows = fetch(url)
  .then(res => res.json())
  .then((out) => {
-  // console.log(out);
+ // console.log(out);
  })
  .catch(err => console.error(err));
 
-console.log(shows);*/
-var data;
+ console.log(shows);
+ var data;
 
-function successListener() {
-  var data = JSON.parse(this.responseText);
-  console.log(data);
-}
+ function successListener() {
+ var data = JSON.parse(this.responseText);
+ console.log(data);
+ }
 
-function failureListener(err) {
-  console.log('Request failed', err);
-}
+ function failureListener(err) {
+ console.log('Request failed', err);
+ }
 
-var request = new XMLHttpRequest();
-request.onload = successListener;
-request.onerror = failureListener;
-request.open('get', url , true);
-request.send();
-
+ var request = new XMLHttpRequest();
+ request.onload = successListener;
+ request.onerror = failureListener;
+ request.open('get', url, true);
+ request.send();
 
  console.log(data);
-/*
-var shows = $.getJSON("https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage", function (data) {
-  return jQuery.parseJSON(JSON.stringify(data));
-});
+ /*var shows = $.getJSON("https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage", function (data) {
+ return jQuery.parseJSON(JSON.stringify(data));
+ });
 
-console.log(shows);*/
+ console.log(shows);*/
 
-
-var media_shows = [
+let MEDIA_SHOWS = [
 
   {
     "unit": 84,
@@ -209,8 +207,38 @@ var media_shows = [
 
 ];
 
-var MediaShow = React.createClass({
-  render: function () {
+class BriefMediaShow extends React.Component {
+  render() {
+    var data = this.props.data;
+    var briefMediaShowTemplate = data.map(function (item, index) {
+      return (
+        <div key={index} className="media-show__description">
+
+
+          <div className="media-show__poster">
+            <img src={item.poster} alt={item.show_title}/>
+          </div>
+
+          <header className="media-show__header">
+            <h3 className="media-show__title">{item.show_title}</h3>
+            <span className="media-show__release-year">{item.release_year}</span>
+            <p className="media-show__category">{item.category}</p>
+          </header>
+
+        </div>
+      );
+    });
+
+    return (
+      <div className="media-show media-show_brief">
+        {briefMediaShowTemplate}
+      </div>
+    );
+  }
+}
+
+class MediaShow extends React.Component {
+  render() {
     var data = this.props.data;
     var mediaShowTemplate = data.map(function (item, index) {
       return (
@@ -238,62 +266,29 @@ var MediaShow = React.createClass({
 
           </div>
         </div>
-      )
+      );
     });
 
     return (
       <div className="media-show">
         { mediaShowTemplate}
       </div>
-    )
+    );
   }
-});
+}
 
-var BriefMediaShow = React.createClass({
-  render: function () {
-    var data = this.props.data;
-    var briefMediaShowTemplate = data.map(function (item, index) {
-      return (
-        <div key={index} className="media-show__description">
-
-
-          <div className="media-show__poster">
-            <img src={item.poster} alt={item.show_title}/>
-          </div>
-
-          <header className="media-show__header">
-            <h3 className="media-show__title">{item.show_title}</h3>
-            <span className="media-show__release-year">{item.release_year}</span>
-            <p className="media-show__category">{item.category}</p>
-          </header>
-
-        </div>
-      )
-    });
-
-    return (
-      <div className="media-show media-show_brief">
-        {briefMediaShowTemplate}
-      </div>
-    )
-  }
-});
-
-var App = React.createClass({
-  render: function () {
+class App extends React.Component {
+  render() {
     return (
       <div>
-        <MediaShow data={media_shows}/>
-        <hr />
-        <BriefMediaShow data={media_shows}/>
+        <Film />
+        <BriefMediaShow data={MEDIA_SHOWS}/>
       </div>
-    )
+    );
   }
-});
-
+}
 
 ReactDOM.render(
   <App />,
   document.getElementById('app')
 );
-

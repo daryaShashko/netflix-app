@@ -30,11 +30,12 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       use: {
-        loader: 'babel-loader',
-        options: {
-          plugins: ["transform-react-jsx"]
-        }
+        loader: 'babel-loader'
       }
+    }, {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'eslint-loader'
     }
 
     ]
