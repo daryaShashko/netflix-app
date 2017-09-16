@@ -1,0 +1,136 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+.flex-container {
+  .display-flex();
+  .flex-wrap(wrap);
+
+  &_justify_space-between {
+    .justify-content(space-between);
+  }
+
+  &_justify_space-around {
+    .justify-content(space-around);
+  }
+  &_justify_center {
+    .justify-content(center);
+  }
+
+  &_align-items_center {
+    .align-items(center);
+  }
+
+  &_align-items_flex-end {
+    .align-items(flex-end);
+  }
+}
+
+.flex-container_direction {
+  &_column {
+    .flex-direction(column);
+  }
+  &_row {
+    .flex-direction(row);
+  }
+
+}
+
+.flex-container_bg-color {
+  &_dark {
+    background-color: #666;
+  }
+}
+
+.flex-container_wrap {
+  &_no-wrap {
+    .flex-wrap(nowrap);
+  }
+  &_desktop {
+    &.flex-container_wrap_no-wrap {
+      .flex-wrap(wrap);
+
+      @media @break3{
+        .flex-wrap(nowrap);
+      }
+    }
+  }
+}
+
+.flex-container__item_half-on-desktop {
+  .flex(1, 0, 100%);
+
+  @media @break3 {
+    .flex-basis(49.9%);
+  }
+}
+
+@media @break3 {
+  .flex-container_no-wrap_on-desktop {
+    .flex-wrap(nowrap);
+  }
+}
+
+.flex-container__item_bg-color_dark {
+  background-color: #666;
+}
+
+.flex-container__item {
+  .flex(1, 1, 0.01px);
+  min-height: 0;
+  min-width: 0;
+}
+
+.flex-container__item_half {
+  .flex-basis(50%);
+  overflow: hidden;
+  .box-sizing();
+}
+
+.flex-container__item_tenth {
+  .flex-basis(10%);
+}
+
+.flex-container__item_all-wide {
+  .flex-basis();
+}
+
+.flex-container__item_3 {
+  .flex(1, 1, 33.33%);
+  max-width: 33.33%;
+}
+
+.flex-container__item_sidebar{
+  .just-desktop();
+  max-width: 150px;
+  width: 100%;
+  margin-right: 12px;
+  overflow: hidden;
+
+  @media screen and (min-width: @desktop){
+    max-width: 162px;
+    margin-right: 20px;
+  }
+}
+
+.flex-container_theme_items-border {
+  .flex-container__item_3 {
+    border-right: 1px solid #ccc;
+    .box-sizing();
+
+    &:last-child {
+      border: none;
+    }
+  }
+  .head-line {
+    margin: 0;
+  }
+}
+
+.flex-container__text {
+  padding-top: 15px;
+  display: inline-block;
+}
+
+
+
+

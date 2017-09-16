@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Film from './components/Film';
+import FilmBrief from './components/FilmBrief';
+import SearchArea from './components/SearchArea';
+import {SortArea} from './components/SortArea.js';
+import {LogoNetflix} from './components/LogoNetflix.js';
+import {TextArea} from './components/TextArea.js';
+import {HeadLine} from './components/HeadLine.js';
 
 let url = 'https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage';
 /*
@@ -37,7 +43,6 @@ let url = 'https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage';
  console.log(shows);*/
 
 let MEDIA_SHOWS = [
-
   {
     "unit": 84,
 
@@ -207,82 +212,72 @@ let MEDIA_SHOWS = [
 
 ];
 
-class BriefMediaShow extends React.Component {
-  render() {
-    var data = this.props.data;
-    var briefMediaShowTemplate = data.map(function (item, index) {
-      return (
-        <div key={index} className="media-show__description">
-
-
-          <div className="media-show__poster">
-            <img src={item.poster} alt={item.show_title}/>
-          </div>
-
-          <header className="media-show__header">
-            <h3 className="media-show__title">{item.show_title}</h3>
-            <span className="media-show__release-year">{item.release_year}</span>
-            <p className="media-show__category">{item.category}</p>
-          </header>
-
-        </div>
-      );
-    });
-
-    return (
-      <div className="media-show media-show_brief">
-        {briefMediaShowTemplate}
-      </div>
-    );
-  }
-}
-
-class MediaShow extends React.Component {
-  render() {
-    var data = this.props.data;
-    var mediaShowTemplate = data.map(function (item, index) {
-      return (
-        <div key={index} className="media-show__wrapper">
-
-          <div className="media-show__poster">
-            <img src={item.poster} alt={item.show_title}/>
-          </div>
-
-          <div className="media-show__description">
-            <header className="media-show__header">
-              <h3 className="media-show__title">{item.show_title}</h3>
-              <span className="media-show__rating">{item.rating}</span>
-              <p className="media-show__category">{item.category}</p>
-              <span className="media-show__release-year">{item.release_year}</span>
-              <span className="media-show__runtime">{item.runtime}</span>
-            </header>
-
-            <p className="media-show__summary">{item.summary}</p>
-
-            <footer className="media-show__footer">
-              <span className="media-show__director">Director: {item.director}</span>
-              <span className="media-show__cast">Cast: {item.show_cast}</span>
-            </footer>
-
-          </div>
-        </div>
-      );
-    });
-
-    return (
-      <div className="media-show">
-        { mediaShowTemplate}
-      </div>
-    );
-  }
-}
-
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Film />
-        <BriefMediaShow data={MEDIA_SHOWS}/>
+        <div className="page">
+          <div className="page__wrapper">
+
+            <div className="page__header">
+              <div className="content-wrapper">
+
+                <div className="grid">
+                  <div className="grid__item grid__item_12">
+                    <LogoNetflix />
+                  </div>
+                </div>
+
+                <div className="grid">
+                  <div className="grid__item grid__item_12">
+                    <SearchArea />
+                  </div>
+                </div>
+
+                <div className="grid">
+                  <div className="grid__item grid__item_12">
+                    <Film />
+                  </div>
+                </div>
+              </div>
+
+
+              <div className="page__body">
+                <div className="wrapper wrapper_bgc_grey">
+                  <div className="content-wrapper">
+                    <div
+                      className="flex-container flex-container_justify_space-between flex-container_align-items_center">
+                      <TextArea className="text-area_serach-result" text="7 movies was found"/>
+                      <SortArea className="sort-area_date-rating" headLineText="Sort by" firstCriterion="release date"
+                                secondCriterion="rating"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="content-wrapper">
+
+                  <div className="grid">
+                    <div className="grid__item grid__item_4"><FilmBrief /></div>
+                    <div className="grid__item grid__item_4"><FilmBrief /></div>
+                    <div className="grid__item grid__item_4"><FilmBrief /></div>
+                    <div className="grid__item grid__item_4"><FilmBrief /></div>
+                    <div className="grid__item grid__item_4"><FilmBrief /></div>
+                    <div className="grid__item grid__item_4"><FilmBrief /></div>
+                    <div className="grid__item grid__item_4"><FilmBrief /></div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div className="page__footer">
+              <div className="content-wrapper">
+                <LogoNetflix />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

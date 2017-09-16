@@ -1,0 +1,34 @@
+@import "../base/mixins";
+@import "../base/variables";
+@import "../base/typography";
+
+.head-line {
+  .headline_style_e();
+}
+
+.head-line_uppercase{
+  text-transform: uppercase;
+}
+
+.head-line_color {
+  &-white {
+    color: #fff;
+  }
+}
+
+.head-line_align_left {
+  text-align: left;
+}
+
+@media @break2 {
+  .head-line_main {
+    font-size: 25px;
+  }
+}
+
+@media @break3 {
+  .head-line_main {
+    font-size: 26px;
+  }
+
+}

@@ -10,53 +10,34 @@
 }
 
 .page__header {
-  color: #fff;
   position: relative;
-  background-color: @uiLightBlack;
-  z-index: 6;
-  .box-sizing();
-
-  .content-wrapper {
-    padding: 0 11px;
-    position: relative;
-  }
-
-  .grid__item {
-    margin-bottom: 0;
-  }
-
-  .grid__item_3 {
-    margin-right: 2.961%;
-  }
+  padding-top: 20px;
+  background-color: rgba(0, 0, 0, .3);
 }
 
 .page__body {
   background-color: #fff;
-  padding-top: 36px;
   overflow: hidden;
   .box-sizing();
-}
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  //hack for IE (page__body in IE need display: flex; because in Edit profile, when click on link in the left-navigation, the banner was hidden and page become smaller then have to.)  but in Iphone this property kick all layout)
-  .page__body {
-    .display-flex();
-    .flex-direction(column);
+  > * + * {
+    margin-top: 36px;
+
+    @media @break2 {
+      margin-top: 52px;
+    }
+
+    @media @break3 {
+      margin-top: 56px;
+    }
   }
 }
-
 
 .page__footer {
-  font: normal 11px @font-regular;
-  color: #fff;
   height: auto;
-  padding-top: 15px;
+  padding: 20px 0;
   background-color: #000;
   .box-sizing();
-
-  .content-wrapper {
-    padding: 0 11px;
-  }
 }
 
 .content-wrapper {
@@ -67,149 +48,9 @@
   .box-sizing();
 }
 
-.content-wrapper_theme_big-padding {
-  padding: 0 6%;
-}
-
-.content-wrapper_position_absolute {
-  position: absolute;
-  left: 50%;
-  .translate(-50%, 0);
-  height: auto;
-  z-index: 2;
-}
-
-.ids-wrap--fixed {
-  overflow: hidden !important;
-}
-
-#ids_overlay_container{
-  max-height: 90vh;
-  overflow: auto;
-}
-
-.page_home-page .page__body > .content-wrapper{
-  margin-top: 36px;
-}
-
 @media screen and (min-width: @tablet) {
-
-  .page__header {
-    height: 45px;
-    .grid__item {
-      margin-bottom: 0;
-    }
-    .content-wrapper {
-      padding-top: 0;
-    }
-  }
-
-  .page__body {
-    padding-top: 0;
-  }
-
-  .page__footer {
-    padding-top: 0;
-    height: 71px;
-
-    .grid__item {
-      margin-bottom: 0;
-    }
-    .footer {
-      height: 100%;
-    }
-  }
-
-  .content-wrapper_theme_big-padding {
-    padding: 0 4%;
-  }
-
   .content-wrapper {
     max-width: 980px;
     padding: 0 8px;
-  }
-
-  .page_home-page {
-    .content-wrapper {
-      padding: 0 9.39%;
-    }
-
-    .page__header, .page__footer {
-      .content-wrapper {
-        padding: 0 11px;
-      }
-    }
-
-    .page__body > .content-wrapper{
-      margin-top: 52px;
-    }
-  }
-
-  .page_login {
-
-    .content-wrapper {
-      max-width: 800px;
-    }
-
-    .page__header, .page__footer {
-      .content-wrapper {
-        max-width: 980px;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: @desktop) {
-
-  .page__header {
-    height: 45px;
-    .grid__item {
-      margin-bottom: 0;
-    }
-    .content-wrapper {
-      padding-top: 0;
-    }
-  }
-
-  .page_home-page {
-    .content-wrapper {
-      padding: 0;
-      max-width: 800px;
-    }
-
-    .page__header, .page__footer {
-      .content-wrapper {
-        max-width: 980px;
-      }
-    }
-
-    .page__body > .content-wrapper{
-      margin-top: 56px;
-    }
-  }
-
-  .content-wrapper {
-    padding: 0;
-  }
-
-  .content-wrapper.content-wrapper_theme_big-padding {
-    padding: 0 90px;
-  }
-}
-
-@media @break1 {
-
-  .page__header {
-    margin-bottom: 20px;
-    position: fixed;
-    width: 100%;
-    height: 36px;
-    left: 0;
-    top: 0;
-    z-index: 10;
-
-    .grid {
-      .flex-wrap(nowrap);
-    }
   }
 }
