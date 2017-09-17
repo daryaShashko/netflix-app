@@ -5,7 +5,7 @@ import {Button} from './Button.js';
 
 export const SortArea = (props) => (
   <div className={'sort-area ' + props.className}>
-    <HeadLine className={"head-line_uppercase " + props.headLineClass} text={props.headLineText}/>
+    <HeadLine className={props.headLineClass} text={props.headLineText}/>
     <Button buttonType="button" className="button_active" text={props.firstCriterion}/>
     <Button buttonType="button" text={props.secondCriterion}/>
   </div>

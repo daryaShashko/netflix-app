@@ -18,18 +18,22 @@
 .page__body {
   background-color: #fff;
   overflow: hidden;
+  position: relative;
   .box-sizing();
 
-  > * + * {
-    margin-top: 36px;
+  > * {
+    & + *, & + .content-wrapper {
+      margin-top: 36px;
 
-    @media @break2 {
-      margin-top: 52px;
+      @media @break2 {
+        margin-top: 52px;
+      }
+
+      @media @break3 {
+        margin-top: 56px;
+      }
     }
 
-    @media @break3 {
-      margin-top: 56px;
-    }
   }
 }
 

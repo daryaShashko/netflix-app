@@ -7,6 +7,8 @@
   .flex-wrap(wrap);
 }
 
+
+
 .grid_background-color_white {
   background-color: #fff;
 }
@@ -20,25 +22,6 @@
 
 .grid__item_overflow_visible{
   overflow: visible;
-}
-
-.grid_style_wide {
-  .justify-content(flex-start);
-
-  .grid__item {
-    margin-right: 0;
-    margin-bottom: 0;
-    .flex(1, 0, 100%);
-    .box-sizing(content-box);
-  }
-}
-
-@media @break1 {
-  .grid_style_wide {
-    .grid__item {
-      max-width: 100% !important;
-    }
-  }
 }
 
 @media screen and (min-width: @tablet) {
@@ -94,6 +77,18 @@
     }
   }
 }
+
+
+@amount: 12;
+.loop (@index) when (@index <= @amount) {
+  @nth-child: floor(@amount / @index);
+    .grid__item_@{index}:nth-child(@{nth-child}n) {
+      margin-right: 0;
+    }
+  .loop(@index + 1);
+}
+
+.loop (1);
 
 /* end flex grid */
 

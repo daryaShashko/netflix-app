@@ -6,7 +6,8 @@ module.exports = {
 
   entry: {
     home: './client/src/client.js',
-    styles: './client/src/less/style.less'
+    styles: './client/src/less/style.less',
+    search: './client/src/search.js'
   },
 
   output: {
@@ -42,9 +43,16 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Test',
+      filename: 'index.html',
       hash: true,
-      template: './client/src/index.html'
+      template: './client/src/index.html',
+      excludechunks: ['search']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'search.html',
+      hash: true,
+      template: './client/src/search.html',
+      excludechunks: ['home']
     }),
     new ExtractTextPlugin({
       filename: 'style.css',

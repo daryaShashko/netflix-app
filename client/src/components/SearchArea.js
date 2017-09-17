@@ -11,8 +11,8 @@ export default class SearchArea extends React.Component {
         <HeadLine className="head-line_uppercase head-line_color-white" text="Find your movie"/>
         <Input inputType="search" className="input-area_search" inputPlaceholder="Search here"/>
         <div className="flex-container flex-container_justify_space-between">
-          <SortArea className="sort-area_title-director" headLineClass="head-line_color-white"/>
-          <Button buttonType="button" text="Search"/>
+          <SortArea className="sort-area_title-director" headLineClass="head-line_uppercase head-line_color-white"/>
+          <Button className="button_big" buttonType="button" text="Search"/>
         </div>
       </div>
     );

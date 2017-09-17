@@ -212,7 +212,7 @@ let MEDIA_SHOWS = [
 
 ];
 
-class App extends React.Component {
+class SearchResult extends React.Component {
   render() {
     return (
       <div className="page">
@@ -232,41 +232,17 @@ class App extends React.Component {
                   <SearchArea />
                 </div>
               </div>
-
-              <div className="grid">
-                <div className="grid__item grid__item_12">
-                  <Film />
-                </div>
-              </div>
             </div>
+          </div>
 
 
-            <div className="page__body">
-              <div className="wrapper wrapper_bgc_grey">
-                <div className="content-wrapper">
-                  <div
-                    className="flex-container flex-container_justify_space-between flex-container_align-items_center">
-                    <TextArea className="text-area_serach-result" text="7 movies was found"/>
-                    <SortArea className="sort-area_date-rating" headLineText="Sort by" firstCriterion="release date"
-                              secondCriterion="rating"/>
-                  </div>
-                </div>
-              </div>
+          <div className="page__body">
+            <div className="wrapper wrapper_bgc_grey"></div>
 
-              <div className="content-wrapper">
+            <div className="content-wrapper">
 
-                <div className="grid">
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                </div>
+              <HeadLine className="head-line_color-light-grey head-line_empty-result" text="No films found"/>
 
-
-              </div>
             </div>
           </div>
 
@@ -282,6 +258,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('app')
+  <SearchResult />,
+  document.getElementById('search-result')
 );
