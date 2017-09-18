@@ -7,12 +7,12 @@ export default class FilmBrief extends React.Component {
     return (
       <div className="media-show media-show_brief">
         <div className="media-show__description">
-          <FilmPoster poster="http://netflixroulette.net/api/posters/60031236.jpg" show_title="Rocket boy"/>
+          <FilmPoster poster={this.props.poster} show_title={this.props.show_title}/>
 
           <header className="media-show__header">
-            <FilmDescriptionItem className="media-show__title" text="Pulp Fiction"/>
-            <FilmDescriptionItem className="media-show__release-year" text="1994"/>
-            <FilmDescriptionItem className="media-show__category" text="Oscar-winning Movie"/>
+            <FilmDescriptionItem className="media-show__title" text={this.props.show_title}/>
+            <FilmDescriptionItem className="media-show__release-year" text={this.props.release_year}/>
+            <FilmDescriptionItem className="media-show__category" text={this.props.category}/>
           </header>
         </div>
       </div>

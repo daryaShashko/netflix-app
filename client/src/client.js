@@ -209,8 +209,10 @@ let MEDIA_SHOWS = [
     "runtime": "98 min"
 
   }
-
 ];
+
+
+
 
 class App extends React.Component {
   render() {
@@ -235,38 +237,67 @@ class App extends React.Component {
 
               <div className="grid">
                 <div className="grid__item grid__item_12">
-                  <Film />
+                  {
+                    MEDIA_SHOWS.map(function (el, i) {
+                      if (i === 0) {
+                        return (
+                          <Film
+                            key={el.id}
+                            poster={el.poster}
+                            show_title={el.show_title}
+                            rating={el.rating}
+                            category={el.category}
+                            release_year={el.release_year}
+                            runtime={el.runtime}
+                            summary={el.summary}
+                            director={el.director}
+                            show_cast={el.show_cast}
+                          />
+                        )
+                      } else {
+                        return null;
+                      }
+                    })
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div className="page__body">
+            <div className="wrapper wrapper_bgc_grey">
+              <div className="content-wrapper">
+                <div
+                  className="flex-container flex-container_justify_space-between flex-container_align-items_center">
+                  <TextArea className="text-area_search-result" text="7 movies was found"/>
+                  <SortArea className="sort-area_date-rating" headLineText="Sort by" firstCriterion="release date"
+                            secondCriterion="rating"/>
                 </div>
               </div>
             </div>
 
+            <div className="content-wrapper">
 
-            <div className="page__body">
-              <div className="wrapper wrapper_bgc_grey">
-                <div className="content-wrapper">
-                  <div
-                    className="flex-container flex-container_justify_space-between flex-container_align-items_center">
-                    <TextArea className="text-area_serach-result" text="7 movies was found"/>
-                    <SortArea className="sort-area_date-rating" headLineText="Sort by" firstCriterion="release date"
-                              secondCriterion="rating"/>
-                  </div>
-                </div>
+              <div className="grid">
+                {
+                  MEDIA_SHOWS.map(function (el) {
+                    return (
+                      <div className="grid__item grid__item_4">
+                        <FilmBrief
+                          key={el.id}
+                          poster={el.poster}
+                          show_title={el.show_title}
+                          release_year={el.release_year}
+                          category={el.category}
+                        />
+                      </div>
+                    );
+                  })
+                }
               </div>
 
-              <div className="content-wrapper">
 
-                <div className="grid">
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                  <div className="grid__item grid__item_4"><FilmBrief /></div>
-                </div>
-
-
-              </div>
             </div>
           </div>
 
