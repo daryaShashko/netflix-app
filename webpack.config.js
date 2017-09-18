@@ -59,13 +59,13 @@ module.exports = {
       filename: 'index.html',
       hash: true,
       template: './client/src/index.html',
-      excludechunks: ['search']
+      excludeChunks: ['search']
     }),
     new HtmlWebpackPlugin({
       filename: 'search.html',
       hash: true,
       template: './client/src/search.html',
-      excludechunks: ['home']
+      excludeChunks: ['home']
     }),
     new ExtractTextPlugin({
       filename: 'style.css',

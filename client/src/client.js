@@ -212,8 +212,6 @@ let MEDIA_SHOWS = [
 ];
 
 
-
-
 class App extends React.Component {
   render() {
     return (
@@ -242,7 +240,7 @@ class App extends React.Component {
                       if (i === 0) {
                         return (
                           <Film
-                            key={el.id}
+                            key={el.show_id}
                             poster={el.poster}
                             show_title={el.show_title}
                             rating={el.rating}
@@ -253,10 +251,9 @@ class App extends React.Component {
                             director={el.director}
                             show_cast={el.show_cast}
                           />
-                        )
-                      } else {
-                        return null;
+                        );
                       }
+                      return null;
                     })
                   }
                 </div>
@@ -268,8 +265,7 @@ class App extends React.Component {
           <div className="page__body">
             <div className="wrapper wrapper_bgc_grey">
               <div className="content-wrapper">
-                <div
-                  className="flex-container flex-container_justify_space-between flex-container_align-items_center">
+                <div className="flex-container flex-container_justify_space-between flex-container_align-items_center">
                   <TextArea className="text-area_search-result" text="7 movies was found"/>
                   <SortArea className="sort-area_date-rating" headLineText="Sort by" firstCriterion="release date"
                             secondCriterion="rating"/>
@@ -281,11 +277,10 @@ class App extends React.Component {
 
               <div className="grid">
                 {
-                  MEDIA_SHOWS.map(function (el) {
+                  MEDIA_SHOWS.map(function (el, i) {
                     return (
-                      <div className="grid__item grid__item_4">
+                      <div className="grid__item grid__item_4" key={el.show_id + 'a'}>
                         <FilmBrief
-                          key={el.id}
                           poster={el.poster}
                           show_title={el.show_title}
                           release_year={el.release_year}
@@ -313,6 +308,8 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <App />,
+  <div>
+    <App />
+  </div>,
   document.getElementById('app')
 );
