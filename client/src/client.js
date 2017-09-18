@@ -5,8 +5,8 @@ import FilmBrief from './components/FilmBrief';
 import SearchArea from './components/SearchArea';
 import {SortArea} from './components/SortArea.js';
 import {LogoNetflix} from './components/LogoNetflix.js';
-import {TextArea} from './components/TextArea.js';
-import {HeadLine} from './components/HeadLine.js';
+import { TextArea } from './components/TextArea.js';
+import { HeadLine } from './components/HeadLine.js';
 
 let url = 'https://netflixroulette.net/api/api.php?actor=Nicolas%20Cage';
 /*
