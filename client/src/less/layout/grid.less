@@ -1,0 +1,146 @@
+@import "../base/mixins";
+@import "../base/variables";
+
+/* flex grid */
+.grid {
+  .display-flex();
+  .flex-wrap(wrap);
+}
+
+
+
+.grid_background-color_white {
+  background-color: #fff;
+}
+
+.grid__item {
+  .flex(1, 0, 100%);
+  margin-bottom: 36px;
+  overflow: hidden;
+  .box-sizing();
+}
+
+.grid__item_overflow_visible{
+  overflow: visible;
+}
+
+@media screen and (min-width: @tablet) {
+
+  .grid__item {
+    margin-right: 6.25%;
+    margin-bottom: 52px;
+    .flex(0, 0);
+
+    &_12, &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  /* .grid__items width*/
+  .grid__item {
+    &_1 {
+      .flex-basis(2.60417%);
+      //width: 2.60417%;
+    }
+    &_2 {
+      .flex-basis(11.45834%); //formula is calc( (width of one item) * (number of columns) + (width of gap) * (number of gaps) ) calc(2.60417% * 2 + 6.25% * 1);
+    }
+    &_3 {
+      .flex-basis(20.31251%);
+    }
+    &_4 {
+      .flex-basis(29.16668%);
+    }
+    &_5 {
+      .flex-basis(38.02085%);
+    }
+    &_6 {
+      .flex-basis(46.87502%);
+    }
+    &_7 {
+      .flex-basis(53.62919%);
+    }
+    &_8 {
+      .flex-basis(64.58336%);
+    }
+    &_9 {
+      .flex-basis(73.43753%);
+    }
+    &_10 {
+      .flex-basis(82.2917%);
+    }
+    &_11 {
+      .flex-basis(91.14587%);
+    }
+    &_12 {
+      .flex-basis(100%);
+    }
+  }
+}
+
+
+@amount: 12;
+.loop (@index) when (@index <= @amount) {
+  @nth-child: floor(@amount / @index);
+    .grid__item_@{index}:nth-child(@{nth-child}n) {
+      margin-right: 0;
+    }
+  .loop(@index + 1);
+}
+
+.loop (1);
+
+/* end flex grid */
+
+.grid__item_align_center, .grid__item_align_left, .grid__item_align_right {
+  text-align: center;
+  .justify-content(center);
+}
+
+.grid_no-wrap {
+  .flex-wrap(nowrap);
+}
+
+@media screen and (min-width: @tablet) {
+
+  .grid__item_align_center {
+    text-align: center;
+    .justify-content(center);
+  }
+
+  .grid__item_align_left {
+    text-align: left;
+    .justify-content(flex-start);
+  }
+
+  .grid__item_align_right {
+    text-align: right;
+    .justify-content(flex-end);
+  }
+}
+
+.grid_height_full {
+  height: 100%;
+
+  .grid__item {
+    .align-self(stretch);
+  }
+}
+
+.grid__item_valign_middle {
+  .align-items(center);
+}
+
+.grid__item_justify_between {
+  .display-flex();
+  .justify-content(space-between);
+}
+
+@media @break3 {
+  .grid__item{
+    margin-bottom: 56px;
+  }
+}
+
+
+

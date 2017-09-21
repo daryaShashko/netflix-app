@@ -1,0 +1,45 @@
+.head-line {
+  .headline_style_e();
+}
+
+.head-line_uppercase{
+  text-transform: uppercase;
+}
+
+.head-line_color {
+  &-white {
+    color: #fff;
+  }
+  
+  &-light-grey{
+    color: #eee;
+  }
+}
+
+.head-line_align_left {
+  text-align: left;
+}
+
+@media @break2 {
+  .head-line_main {
+    font-size: 25px;
+  }
+}
+
+@media @break3 {
+  .head-line_main {
+    font-size: 26px;
+  }
+}
+
+.head-line_empty-result{
+  font-size: 40px;
+  .display-flex();
+  .align-items(center);
+  .justify-content(center);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

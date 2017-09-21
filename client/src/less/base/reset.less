@@ -1,0 +1,73 @@
+@import "variables";
+@import "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header, nav, section, article, aside, footer, time, details, figcaption, figure, hgroup, main, menu, summary {
+  display: block;
+}
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+body {
+  -webkit-text-size-adjust:none;
+  position: relative;
+  font: normal 12px @font-regular;
+  color: @text-color;
+  line-height: 1.4em;
+  background: #fff;
+
+  @media @break2 {
+    font-size: 13px;
+  }
+
+  @media @break3 {
+    font-size: 14px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: @linkColor;
+  outline: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  li {
+    list-style: none;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tbody, tfoot, thead, tr, th, td {
+    font-weight: normal;
+  }
+
+  td {
+    vertical-align: top;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}

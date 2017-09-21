@@ -1,0 +1,32 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+.input-area__wrapper{
+  position: relative;
+  & + *{
+    margin-top: 20px;
+  }
+}
+
+.input-area__item{
+  color: #fff;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #333;
+  border: none;
+  border-bottom: 2px solid @red;
+  position: relative;
+
+  &::after{
+    content: '"\21B5";';
+    font-size: 20px;
+    color: #ccc;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+  }
+
+
+}
