@@ -1,7 +1,8 @@
 import React from 'react';
-import {HeadLine} from './HeadLine.js';
-import {Input} from './Input.js';
-import {Button} from './Button.js';
+import {HeadLine} from './HeadLine.jsx';
+import {Input} from './Input.jsx';
+import {Button} from './Button.jsx';
+import PropTypes from 'prop-types';
 
 export const SortArea = (props) => (
   <div className={'sort-area ' + props.className}>
@@ -17,4 +18,12 @@ SortArea.defaultProps = {
   headLineText: 'search by',
   firstCriterion: 'title',
   secondCriterion: 'director'
+};
+
+SortArea.propTypes = {
+  className:  PropTypes.string,
+  headLineClass:  PropTypes.string,
+  headLineText:  PropTypes.string,
+  firstCriterion:  PropTypes.string,
+  secondCriterion:  PropTypes.string
 };

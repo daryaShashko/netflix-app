@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button} from './Button.js';
+import {Button} from './Button.jsx';
+import PropTypes from 'prop-types';
 
 export const Input = (props) => (
   <div className="input-area__wrapper">
@@ -13,4 +14,9 @@ Input.defaultProps = {
   className: '',
   type: 'input',
   inputPlaceholder: 'input here'
+};
+
+Input.propTypes = {
+  className:  PropTypes.string,
+  type:  PropTypes.string
 };

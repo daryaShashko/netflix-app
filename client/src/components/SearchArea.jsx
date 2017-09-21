@@ -1,10 +1,10 @@
 import React from 'react';
-import {HeadLine} from './HeadLine.js';
-import {Input} from './Input.js';
-import {Button} from './Button.js';
-import {SortArea} from './SortArea.js';
+import { HeadLine } from './HeadLine.jsx';
+import { Input } from './Input.jsx';
+import { Button } from './Button.jsx';
+import { SortArea } from './SortArea.jsx';
 
-export default class SearchArea extends React.Component {
+export default class SearchArea extends React.PureComponent {
   render() {
     return (
       <div className="search-area">

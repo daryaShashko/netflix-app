@@ -6,9 +6,9 @@ const webpack = require('webpack');
 module.exports = {
 
   entry: {
-    home: './client/src/client.js',
+    home: './client/src/client.jsx',
     styles: './client/src/less/style.less',
-    search: './client/src/search.js'
+    search: './client/src/search.jsx'
   },
 
   output: {
