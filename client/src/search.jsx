@@ -10,59 +10,66 @@ import {TextArea} from './components/TextArea.jsx';
 import {HeadLine} from './components/HeadLine.jsx';
 import MEDIA_SHOWS  from './consts';
 
-class FilmInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
+class FilmA extends React.Component {
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <button type="submit" value="Submit">Submit</button>
-      </form>
-    );
+      <div className="grid__item grid__item_12">
+        {
+          MEDIA_SHOWS.map(function (el, i) {
+            if (i === 0) {
+              return (
+              <Film
+                key={el.show_id}
+                poster={el.poster}
+                showTitle={el.show_title}
+                rating={el.rating}
+                category={el.category}
+                releaseYear={el.release_year}
+                runtime={el.runtime}
+                summary={el.summary}
+                director={el.director}
+                showCast={el.show_cast}
+              />
+                );
+              }
+            return null;
+            })
+          }
+      </div>
+    )
   }
 }
 
-export const SearchResult = () => {
-  return (
-    <div className="grid">
-      {
-        MEDIA_SHOWS.map(function (el) {
-          return (
-          <div className="grid__item grid__item_4" key={el.show_id}>
-            <Link to={`/film/${el.show_title}`}>
-            <FilmBrief
-              poster={el.poster}
-              showTitle={el.show_title}
-              releaseYear={el.release_year}
-              category={el.category}
-            />
-            </Link>
-          </div>
-            );
-          })
-        }
-    </div>
-  )
-};
+export class SearchResult extends React.Component {
+  handlePreviewClick() {
+   alert('click')
+  }
+
+  render() {
+
+    return (
+      <div className="grid">
+        {
+          MEDIA_SHOWS.map(function (el) {
+            return (
+            <div className="grid__item grid__item_4" key={el.show_id}>
+              <Link to={`/film/${el.show_title}`} onClick={this.handlePreviewClick.bind(this)}>
+                <FilmBrief
+                  poster={el.poster}
+                  showTitle={el.show_title}
+                  releaseYear={el.release_year}
+                  category={el.category}
+                />
+              </Link>
+            </div>
+              );
+            })
+          }
+      </div>
+    )
+  }
+}
+;
 
 export default class Search extends React.Component {
 
@@ -84,6 +91,7 @@ export default class Search extends React.Component {
                 <div className="grid__item grid__item_12">
                   <SearchArea />
                   <Link to='/search/a'>Schedule</Link>
+                  <Route path="/film/:name" component={FilmA}/>
                 </div>
               </div>
             </div>
@@ -95,7 +103,7 @@ export default class Search extends React.Component {
 
             <div className="content-wrapper">
 
-              {this.props.children}
+              <Route path="/search/:asd" component={SearchResult}/>
 
             </div>
           </div>

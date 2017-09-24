@@ -7,7 +7,6 @@ import {SortArea} from './components/SortArea.jsx';
 import {LogoNetflix} from './components/LogoNetflix.jsx';
 import { TextArea } from './components/TextArea.jsx';
 import { HeadLine } from './components/HeadLine.jsx';
-import MEDIA_SHOWS  from './consts';
 
 export default class App extends React.Component {
   render() {
