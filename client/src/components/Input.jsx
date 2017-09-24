@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 
 export const Input = (props) => (
   <div className="input-area__wrapper">
-    <input type={props.inputType} className={'input-area__item ' + props.className}
-           placeholder={props.inputPlaceholder}/>
-    <Button className="button_icon button_icon-search"/>
+    <input type={props.inputType} className={'input-area__item ' + props.className} placeholder={props.inputPlaceholder} />
+    <Button type="submit" className="button_icon button_icon-search"/>
   </div>
 );
 

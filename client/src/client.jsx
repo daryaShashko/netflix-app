@@ -9,7 +9,7 @@ import { TextArea } from './components/TextArea.jsx';
 import { HeadLine } from './components/HeadLine.jsx';
 import MEDIA_SHOWS  from './consts';
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div className="page">
@@ -36,23 +36,23 @@ class App extends React.Component {
                     MEDIA_SHOWS.map(function (el, i) {
                       if (i === 0) {
                         return (
-                          <Film
-                            key={el.show_id}
-                            poster={el.poster}
-                            showTitle={el.show_title}
-                            rating={el.rating}
-                            category={el.category}
-                            releaseYear={el.release_year}
-                            runtime={el.runtime}
-                            summary={el.summary}
-                            director={el.director}
-                            showCast={el.show_cast}
-                          />
-                        );
-                      }
+                        <Film
+                          key={el.show_id}
+                          poster={el.poster}
+                          showTitle={el.show_title}
+                          rating={el.rating}
+                          category={el.category}
+                          releaseYear={el.release_year}
+                          runtime={el.runtime}
+                          summary={el.summary}
+                          director={el.director}
+                          showCast={el.show_cast}
+                        />
+                          );
+                        }
                       return null;
-                    })
-                  }
+                      })
+                    }
                 </div>
               </div>
             </div>
@@ -76,20 +76,22 @@ class App extends React.Component {
                 {
                   MEDIA_SHOWS.map(function (el, i) {
                     return (
-                      <div className="grid__item grid__item_4" key={el.show_id + 'a'}>
-                        <FilmBrief
-                          poster={el.poster}
-                          showTitle={el.show_title}
-                          releaseYear={el.release_year}
-                          category={el.category}
-                        />
-                      </div>
-                    );
-                  })
-                }
+                    <div className="grid__item grid__item_4" key={el.show_id + 'a'}>
+                      <FilmBrief
+                        poster={el.poster}
+                        showTitle={el.show_title}
+                        releaseYear={el.release_year}
+                        category={el.category}
+                      />
+                    </div>
+                      );
+                    })
+                  }
               </div>
+            </div>
 
-
+            <div className="grid">
+              {this.props.children}
             </div>
           </div>
 
@@ -106,6 +108,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-    <App />,
+  <App />,
   document.getElementById('app')
 );
