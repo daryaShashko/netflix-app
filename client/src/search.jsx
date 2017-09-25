@@ -41,9 +41,6 @@ class FilmA extends React.Component {
 }
 
 export class SearchResult extends React.Component {
-  handlePreviewClick() {
-   alert('click')
-  }
 
   render() {
 
@@ -53,7 +50,7 @@ export class SearchResult extends React.Component {
           MEDIA_SHOWS.map(function (el) {
             return (
             <div className="grid__item grid__item_4" key={el.show_id}>
-              <Link to={`/film/${el.show_title}`} onClick={this.handlePreviewClick.bind(this)}>
+              <Link to={`/film/${el.show_title}`}>
                 <FilmBrief
                   poster={el.poster}
                   showTitle={el.show_title}

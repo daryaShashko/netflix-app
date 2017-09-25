@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import { HeadLine } from './HeadLine.jsx';
 import { Button } from './Button.jsx';
 import { SortArea } from './SortArea.jsx';
+import { Link, Route } from 'react-router-dom';
 
 export default class SearchArea extends React.Component {
   constructor(props) {
@@ -10,24 +11,17 @@ export default class SearchArea extends React.Component {
     this.state = {value: ''};
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
   }
 
-  handleSubmit(event) {
-    location.pathname = 'search';
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-
-  }
 
   render() {
 
     return (
-      <form onSubmit={this.handleSubmit} className="search-area">
+      <form className="search-area">
         <HeadLine className="head-line_uppercase head-line_color-white" text="Find your movie"/>
 
         <div className="input-area__wrapper">
@@ -36,7 +30,10 @@ export default class SearchArea extends React.Component {
         </div>
         <div className="flex-container flex-container_justify_space-between">
           <SortArea className="sort-area_title-director" headLineClass="head-line_uppercase head-line_color-white"/>
-          <Button className="button_big" buttonType="submit" text="Search" />
+
+          <Link to={ `/search/${this.state.value}`}>
+            <Button className="button_big" buttonType="submit" text="Search" />
+          </Link>
         </div>
       </form>
     );

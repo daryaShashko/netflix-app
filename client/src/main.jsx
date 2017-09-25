@@ -13,7 +13,7 @@ import MEDIA_SHOWS  from './consts';
 ReactDOM.render((
 
   <Router>
-      <Route path="/search" component={Search} />
+      <Route path="/" component={Search} />
   </Router>
 
 ), document.getElementById('app'))
