@@ -11,13 +11,14 @@ import {HeadLine} from './components/HeadLine.jsx';
 import MEDIA_SHOWS  from './consts';
 
 class FilmA extends React.Component {
+
   render() {
+    const filmId = this.props.match.params.id;
     return (
-      <div className="grid__item grid__item_12">
-        {
-          MEDIA_SHOWS.map(function (el, i) {
-            if (i === 0) {
-              return (
+      MEDIA_SHOWS.find(function (el) {
+        if (el.show_id == filmId) {
+          return (
+            <div className="grid__item grid__item_12">
               <Film
                 key={el.show_id}
                 poster={el.poster}
@@ -30,43 +31,37 @@ class FilmA extends React.Component {
                 director={el.director}
                 showCast={el.show_cast}
               />
-                );
-              }
-            return null;
-            })
-          }
-      </div>
-    )
-  }
-}
-
-export class SearchResult extends React.Component {
-
-  render() {
-
-    return (
-      <div className="grid">
-        {
-          MEDIA_SHOWS.map(function (el) {
-            return (
-            <div className="grid__item grid__item_4" key={el.show_id}>
-              <Link to={`/film/${el.show_title}`}>
-                <FilmBrief
-                  poster={el.poster}
-                  showTitle={el.show_title}
-                  releaseYear={el.release_year}
-                  category={el.category}
-                />
-              </Link>
             </div>
-              );
-            })
-          }
-      </div>
-    )
+          );
+        }
+        return null;
+      })
+    );
   }
 }
-;
+
+export function SearchResult(props) {
+  return (
+    <div className="grid">
+      {
+        MEDIA_SHOWS.map(function (el) {
+          return (
+          <div className="grid__item grid__item_4" key={el.show_id}>
+            <Link to={`/film/${el.show_id}`}>
+              <FilmBrief
+                poster={el.poster}
+                showTitle={el.show_title}
+                releaseYear={el.release_year}
+                category={el.category}
+              />
+            </Link>
+          </div>
+            );
+          })
+        }
+    </div>
+  )
+};
 
 export default class Search extends React.Component {
 
@@ -88,7 +83,7 @@ export default class Search extends React.Component {
                 <div className="grid__item grid__item_12">
                   <SearchArea />
                   <Link to='/search/a'>Schedule</Link>
-                  <Route path="/film/:name" component={FilmA}/>
+                  <Route path="/film/:id" component={FilmA}/>
                 </div>
               </div>
             </div>

@@ -17,7 +17,6 @@ export default class SearchArea extends React.Component {
     this.setState({value: event.target.value});
   }
 
-
   render() {
 
     return (
