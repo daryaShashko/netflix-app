@@ -8,35 +8,35 @@ import {SortArea} from './components/SortArea.jsx';
 import {LogoNetflix} from './components/LogoNetflix.jsx';
 import {TextArea} from './components/TextArea.jsx';
 import {HeadLine} from './components/HeadLine.jsx';
-import MEDIA_SHOWS  from './consts';
+import MEDIA_SHOWS  from './FilmsAPI';
 
-class FilmA extends React.Component {
+export class FilmA extends React.Component {
 
   render() {
     const filmId = this.props.match.params.id;
+    var filmElement = MEDIA_SHOWS.find(function (el) {
+      if (el.show_id == filmId) {
+        return el;
+      }
+      return null;
+    });
+
     return (
-      MEDIA_SHOWS.find(function (el) {
-        if (el.show_id == filmId) {
-          return (
-            <div className="grid__item grid__item_12">
-              <Film
-                key={el.show_id}
-                poster={el.poster}
-                showTitle={el.show_title}
-                rating={el.rating}
-                category={el.category}
-                releaseYear={el.release_year}
-                runtime={el.runtime}
-                summary={el.summary}
-                director={el.director}
-                showCast={el.show_cast}
-              />
-            </div>
-          );
-        }
-        return null;
-      })
-    );
+      <div className="grid__item grid__item_12">
+        <Film
+          key={filmElement.show_id}
+          poster={filmElement.poster}
+          showTitle={filmElement.show_title}
+          rating={filmElement.rating}
+          category={filmElement.category}
+          releaseYear={filmElement.release_year}
+          runtime={filmElement.runtime}
+          summary={filmElement.summary}
+          director={filmElement.director}
+          showCast={filmElement.show_cast}
+        />
+      </div>
+    )
   }
 }
 
@@ -83,7 +83,7 @@ export default class Search extends React.Component {
                 <div className="grid__item grid__item_12">
                   <SearchArea />
                   <Link to='/search/a'>Schedule</Link>
-                  <Route path="/film/:id" component={FilmA}/>
+                  <Route path="/film/:id" component={FilmA }/>
                 </div>
               </div>
             </div>
