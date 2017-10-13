@@ -6,7 +6,7 @@ const webpack = require('webpack');
 module.exports = {
 
   entry: {
-    home: './client/src/main.jsx',
+    home: './client/src/test.jsx',
     styles: './client/src/less/style.less',
     search: './client/src/search.jsx'
   },
