@@ -94,7 +94,7 @@ ReactDOM.render((
           <div className="wrapper wrapper_bgc_grey"/>
 
           <div className="content-wrapper">
-            <RequestButton/>
+            <RequestButton />
             <Route path="/search/:asd" component={Movies}/>
             <Route path='/film/:id' component={Movies}/>
 

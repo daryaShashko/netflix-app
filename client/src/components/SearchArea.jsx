@@ -8,30 +8,38 @@ import { Link, Route } from 'react-router-dom';
 export default class SearchArea extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {};
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.changeQuery = this.changeQuery.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  changeQuery(event){
+    let searchQuery = event.target.value.toLowerCase();
+    this.setState({
+      query: searchQuery,
+    });
   }
+
+  handleSearch(event) {
+    this.props.onHandleSearch(this.state.query);
+  }
+
 
   render() {
-
     return (
       <form className="search-area">
         <HeadLine className="head-line_uppercase head-line_color-white" text="Find your movie"/>
 
         <div className="input-area__wrapper">
-          <input type='search' className='input-area__item input-area_search' placeholder='Search here' value={this.state.value} onChange={this.handleChange}/>
-          <Button buttonType="submit" className="button_icon button_icon-search"/>
+          <input type='search' className='input-area__item input-area_search' placeholder='Search here' value={this.state.query} onChange={this.changeQuery} />
+          <Button buttonType="submit" className="button_icon button_icon-search" />
         </div>
         <div className="flex-container flex-container_justify_space-between">
-          <SortArea className="sort-area_title-director" headLineClass="head-line_uppercase head-line_color-white"/>
+          <SortArea className="sort-area_title-director" headLineClass="head-line_uppercase head-line_color-white" />
 
-          <Link to={ `/search/${this.state.value}`}>
-            <Button className="button_big" buttonType="submit" text="Search" />
+          <Link to={ `/search/${this.state.query}`}>
+            <button className="button button_big" onClick={this.handleSearch}>Search</button>
           </Link>
         </div>
       </form>
