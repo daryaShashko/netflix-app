@@ -39,7 +39,7 @@ export default class SearchArea extends React.Component {
           <SortArea className="sort-area_title-director" headLineClass="head-line_uppercase head-line_color-white" />
 
           <Link to={ `/search/${this.state.query}`}>
-            <button className="button button_big" onClick={this.handleSearch}>Search</button>
+            <button className="button button_big" >Search</button>
           </Link>
         </div>
       </form>
