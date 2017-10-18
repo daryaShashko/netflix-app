@@ -8,7 +8,7 @@ module.exports = {
   entry: {
     home: './client/src/test.jsx',
     styles: './client/src/less/style.less',
-    search: './client/src/search.jsx'
+    // search: './client/src/search.jsx'
   },
 
   output: {
@@ -19,6 +19,8 @@ module.exports = {
   resolve: {
     extensions: ['.js']
   },
+
+  devtool: 'inline-source-map',
 
   module: {
 
@@ -61,12 +63,12 @@ module.exports = {
       template: './client/src/index.html',
       excludeChunks: ['search']
     }),
-    new HtmlWebpackPlugin({
-      filename: 'search.html',
-      hash: true,
-      template: './client/src/search.html',
-      excludeChunks: ['home']
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'search.html',
+    //   hash: true,
+    //   template: './client/src/search.html',
+    //   excludeChunks: ['home']
+    // }),
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true

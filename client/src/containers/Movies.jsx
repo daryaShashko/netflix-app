@@ -18,18 +18,29 @@ export class Movies extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.query !== this.state.query) {
-      this.setState({query: this.props.match.params.query});
-      this.getMovies();
+    // if (nextProps.query !== this.state.query) {
+    //   this.setState({query: this.props.match.params.query});
+    //   this.getMovies();
+    // }
+    const oldQuery = this.props.match.params.query;
+    const nextQuery = nextProps.match.params.query;
+
+    if (oldQuery !== nextQuery) {
+      this.getMovies(nextQuery);
     }
+  }
+
+  componentDidMount() {
+    const query = this.props.match.params.query;
+    this.getMovies(query);
   }
 
   componentWillMount() {
     this.setState({query: this.props.match.params.query});
   }
 
-  getMovies() {
-    let url = `https://api.themoviedb.org/3/search/movie?api_key=7ce8b734e18d23ac5345c37de7911c86&query=${this.state.query}`;
+  getMovies(query) {
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=7ce8b734e18d23ac5345c37de7911c86&query=${query}`;
     Request.get(url).then((response) => {
       this.setState({
         movies: response.body.results,
