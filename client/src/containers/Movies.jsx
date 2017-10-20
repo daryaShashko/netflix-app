@@ -4,6 +4,7 @@ import Request from 'superagent';
 import { Link } from 'react-router-dom';
 
 import FilmBrief from './../components/FilmBrief.jsx';
+import { HeadLine } from './../components/HeadLine.jsx';
 
 
 export class Movies extends React.Component {
@@ -18,10 +19,6 @@ export class Movies extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
-    // if (nextProps.query !== this.state.query) {
-    //   this.setState({query: this.props.match.params.query});
-    //   this.getMovies();
-    // }
     const oldQuery = this.props.match.params.query;
     const nextQuery = nextProps.match.params.query;
 
@@ -47,29 +44,41 @@ export class Movies extends React.Component {
         total: response.body.total_results,
       })
     })
+    console.log(query);
   }
 
   render() {
-    var movie = this.state.movies;
-    return (
-      <div className="grid">
-        {
-          movie.map(function (el) {
-            return (
-            <div className="grid__item grid__item_4" key={el.id}>
-              <Link to={`/film/${el.id}`}>
-                <FilmBrief
-                  poster={'https://image.tmdb.org/t/p/w500' + el.poster_path}
-                  showTitle={el.title}
-                  releaseYear={el.release_date}
-                />
-              </Link>
-            </div>
-              );
-            })
-          }
-      </div>
+    const movies = this.state.movies;
+    const totalResults = this.state.total;
 
-    );
+    function results() {
+      if (totalResults > 0) {
+        return (
+          movies.map(function (el) {
+            return (
+              <div className="grid__item grid__item_4" key={el.id}>
+                <Link to={`/film/${el.id}`}>
+                  <FilmBrief
+                    poster={'https://image.tmdb.org/t/p/w500' + el.poster_path}
+                    showTitle={el.title}
+                    releaseYear={el.release_date}
+                  />
+                </Link>
+              </div>
+            );
+          })
+        );
+      }
+
+      return (
+        <HeadLine className="head-line_color-light-grey head-line_empty-result" text="No films found"/>
+      )
+    }
+
+    var show = results();
+
+    return (
+      <div className="grid">{show}</div>
+    )
   }
 }

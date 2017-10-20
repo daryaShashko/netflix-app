@@ -16,22 +16,30 @@ export class Movie extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (parseInt(nextProps.movieId, 10) !== parseInt(this.state.movieId, 10)) {
-      this.getMovie();
+    const oldId = this.state.movieId;
+    const nextId = nextProps.movieId;
+    if (oldId !== nextId) {
+      this.getMovies(nextId);
     }
   }
 
   componentDidMount() {
+    const id = this.props.match.params.id;
+    this.getMovie(id)
+  }
+
+  componentWillMount() {
     this.setState({movieId: this.props.match.params.id});
   }
 
-  getMovie() {
-    let url = `https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=7ce8b734e18d23ac5345c37de7911c86`;
+  getMovie(id) {
+    let url = `https://api.themoviedb.org/3/movie/${id}?api_key=7ce8b734e18d23ac5345c37de7911c86`;
     Request.get(url).then((response) => {
       this.setState({
         movie: response.body,
       })
     })
+
   }
 
   render() {

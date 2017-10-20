@@ -10,21 +10,19 @@ export default class SearchArea extends React.Component {
     super(props);
     this.state = {};
 
-    this.handleSearch = this.handleSearch.bind(this);
     this.changeQuery = this.changeQuery.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
-  changeQuery(event){
-    let searchQuery = event.target.value.toLowerCase();
-    this.setState({
-      query: searchQuery,
-    });
+  changeQuery(){
+    let searchQuery = this.refs.query.value.toLowerCase();
+    this.setState({ query: searchQuery });
   }
 
-  handleSearch(event) {
-    this.props.onHandleSearch(this.state.query);
+  handleInput(e){
+    let searchQuery = e.target.value.toLowerCase();
+    this.setState({ query: searchQuery });
   }
-
 
   render() {
     return (
@@ -32,14 +30,14 @@ export default class SearchArea extends React.Component {
         <HeadLine className="head-line_uppercase head-line_color-white" text="Find your movie"/>
 
         <div className="input-area__wrapper">
-          <input type='search' className='input-area__item input-area_search' placeholder='Search here' value={this.state.query} onChange={this.changeQuery} />
+          <input type='search' className='input-area__item input-area_search' placeholder='Search here' ref='query' onChange={this.handleInput} />
           <Button buttonType="submit" className="button_icon button_icon-search" />
         </div>
         <div className="flex-container flex-container_justify_space-between">
           <SortArea className="sort-area_title-director" headLineClass="head-line_uppercase head-line_color-white" />
 
           <Link to={ `/search/${this.state.query}`}>
-            <button className="button button_big" >Search</button>
+            <button className="button button_big" onClick={this.changeQuery}>Search</button>
           </Link>
         </div>
       </form>
