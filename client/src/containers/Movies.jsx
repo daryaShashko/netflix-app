@@ -44,7 +44,6 @@ export class Movies extends React.Component {
         total: response.body.total_results,
       })
     })
-    console.log(query);
   }
 
   render() {
@@ -71,7 +70,7 @@ export class Movies extends React.Component {
       }
 
       return (
-        <HeadLine className="head-line_color-light-grey head-line_empty-result" text="No films found"/>
+        <HeadLine className="head-line_color-light-grey head-line_empty-result" text="No films found" />
       )
     }
 

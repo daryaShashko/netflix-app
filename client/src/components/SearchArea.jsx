@@ -16,10 +16,11 @@ export default class SearchArea extends React.Component {
 
   changeQuery(){
     let searchQuery = this.refs.query.value.toLowerCase();
-    this.setState({ query: searchQuery });
+    this.props.onHandleSearch(searchQuery);
+    console.log('query is change in searchArea', searchQuery);
   }
 
-  handleInput(e){
+  handleInput(e){ //нужно чтобы в роутинг сразу вставлялось квери, если этого нет, то оно срабатывает по второму только клику
     let searchQuery = e.target.value.toLowerCase();
     this.setState({ query: searchQuery });
   }

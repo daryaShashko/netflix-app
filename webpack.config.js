@@ -7,8 +7,7 @@ module.exports = {
 
   entry: {
     home: './client/src/test.jsx',
-    styles: './client/src/less/style.less',
-    // search: './client/src/search.jsx'
+    styles: './client/src/less/style.less'
   },
 
   output: {
@@ -47,6 +46,7 @@ module.exports = {
       }
     ]
   },
+
 
   plugins: [
     new webpack.LoaderOptionsPlugin({

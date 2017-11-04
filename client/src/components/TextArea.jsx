@@ -12,5 +12,5 @@ TextArea.defaultProps = {
 
 TextArea.propTypes = {
   className:  PropTypes.string,
-  text:  PropTypes.string
+  text:  PropTypes.any
 };

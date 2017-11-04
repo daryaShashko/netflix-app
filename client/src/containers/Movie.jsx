@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Film from './../components/Film.jsx';
-import FilmsAPI from './../FilmsAPI';
 import Request from 'superagent';
 
 export class Movie extends React.Component {
@@ -17,20 +16,23 @@ export class Movie extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const oldId = this.state.movieId;
-    const nextId = nextProps.movieId;
+    const nextId = nextProps.match.params.id;
     if (oldId !== nextId) {
-      this.getMovies(nextId);
+      this.getMovie(nextId);
     }
   }
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.getMovie(id)
+    this.getMovie(id);
   }
 
   componentWillMount() {
     this.setState({movieId: this.props.match.params.id});
+    console.log('props id', this.props.match.params.id)
   }
+
+
 
   getMovie(id) {
     let url = `https://api.themoviedb.org/3/movie/${id}?api_key=7ce8b734e18d23ac5345c37de7911c86`;
@@ -39,7 +41,6 @@ export class Movie extends React.Component {
         movie: response.body,
       })
     })
-
   }
 
   render() {
