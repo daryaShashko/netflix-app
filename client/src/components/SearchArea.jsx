@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router'
+import { Router } from 'react-router'
 import { HeadLine } from './HeadLine.jsx';
 import { Button } from './Button.jsx';
 import { SortArea } from './SortArea.jsx';
@@ -17,7 +17,6 @@ export default class SearchArea extends React.Component {
   changeQuery(){
     let searchQuery = this.refs.query.value.toLowerCase();
     this.props.onHandleSearch(searchQuery);
-    console.log('query is change in searchArea', searchQuery);
   }
 
   handleInput(e){ //нужно чтобы в роутинг сразу вставлялось квери, если этого нет, то оно срабатывает по второму только клику

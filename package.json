@@ -42,6 +42,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
+    "redux-thunk": "^2.2.0",
     "style-loader": "^0.18.2",
     "superagent": "^3.6.3",
     "url-loader": "^0.5.9",
@@ -49,6 +50,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "axios": "^0.17.1",
     "babel-cli": "^6.26.0",
     "concurrently": "^3.5.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",

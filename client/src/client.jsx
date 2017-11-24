@@ -1,112 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Film from './components/Film.jsx';
-import FilmBrief from './components/FilmBrief.jsx';
-import SearchArea from './components/SearchArea.jsx';
-import {SortArea} from './components/SortArea.jsx';
-import {LogoNetflix} from './components/LogoNetflix.jsx';
-import { TextArea } from './components/TextArea.jsx';
-import { HeadLine } from './components/HeadLine.jsx';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <div className="page">
-        <div className="page__wrapper">
+import App from './containers/App';
+import reducer from './reducers';
 
-          <div className="page__header">
-            <div className="content-wrapper">
-
-              <div className="grid">
-                <div className="grid__item grid__item_12">
-                  <LogoNetflix />
-                </div>
-              </div>
-
-              <div className="grid">
-                <div className="grid__item grid__item_12">
-                  <SearchArea />
-                </div>
-              </div>
-
-              <div className="grid">
-                <div className="grid__item grid__item_12">
-                  {
-                    MEDIA_SHOWS.map(function (el, i) {
-                      if (i === 0) {
-                        return (
-                        <Film
-                          key={el.show_id}
-                          poster={el.poster}
-                          showTitle={el.show_title}
-                          rating={el.rating}
-                          category={el.category}
-                          releaseYear={el.release_year}
-                          runtime={el.runtime}
-                          summary={el.summary}
-                          director={el.director}
-                          showCast={el.show_cast}
-                        />
-                          );
-                        }
-                      return null;
-                      })
-                    }
-                </div>
-              </div>
-            </div>
-          </div>
+const store = createStore(reducer, applyMiddleware(thunk));
 
 
-          <div className="page__body">
-            <div className="wrapper wrapper_bgc_grey">
-              <div className="content-wrapper">
-                <div className="flex-container flex-container_justify_space-between flex-container_align-items_center">
-                  <TextArea className="text-area_search-result" text="7 movies was found"/>
-                  <SortArea className="sort-area_date-rating" headLineText="Sort by" firstCriterion="release date"
-                            secondCriterion="rating"/>
-                </div>
-              </div>
-            </div>
-
-            <div className="content-wrapper">
-
-              <div className="grid">
-                {
-                  MEDIA_SHOWS.map(function (el, i) {
-                    return (
-                    <div className="grid__item grid__item_4" key={el.show_id + 'a'}>
-                      <FilmBrief
-                        poster={el.poster}
-                        showTitle={el.show_title}
-                        releaseYear={el.release_year}
-                        category={el.category}
-                      />
-                    </div>
-                      );
-                    })
-                  }
-              </div>
-            </div>
-
-            <div className="grid">
-              {this.props.children}
-            </div>
-          </div>
-
-          <div className="page__footer">
-            <div className="content-wrapper">
-              <LogoNetflix />
-            </div>
-          </div>
-        </div>
-
-      </div>
-    );
-  }
-}
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 );
+
+/*
+
+ function playlist(state = [], action){
+ console.log(action);
+ if(action.type === 'ADD_TRACK'){
+ return [
+ ...state,
+ action.payload
+ ]
+ }
+ return state
+ }
+
+ const store = createStore(playlist);
+
+ const addTrackButton = document.querySelectorAll('.addTrack')[0];
+ const trackInput =  document.querySelectorAll('.trackInput')[0];
+ const list = document.querySelectorAll('.list')[0];
+
+
+ store.subscribe(() => {
+ list.innerHTML = '';
+ trackInput.value = '';
+ store.getState().map(track => {
+ const li = document.createElement('li');
+ li.textContent = track;
+ list.appendChild(li);
+ });
+ });
+
+
+ addTrackButton.addEventListener('click', () =>{
+ const trackName = trackInput.value;
+ store.dispatch({ type: 'ADD_TRACK', payload: trackName});
+
+ });
+ */

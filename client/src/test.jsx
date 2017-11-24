@@ -11,6 +11,13 @@ import { LogoNetflix } from './components/LogoNetflix.jsx';
 import { HeadLine } from './components/HeadLine.jsx';
 import { TextArea } from './components/TextArea.jsx';
 import ListMovies from './components/listMovies.jsx';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider }  from 'react-redux';
+import thunk from 'redux-thunk';
+import reducers from './reducers/index.js';
+
+let store = createStore(reducers, applyMiddleware(thunk));
+
 
 class App extends React.Component {
   constructor(props) {
@@ -25,22 +32,7 @@ class App extends React.Component {
     this.getListOfMovies = this.getListOfMovies.bind(this);
   }
 
-  componentWillMount() {
-    console.log('componentWillMount', this);
-  }
-
-  componentDidMount() {
-    console.log('componentDidMount', this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps', nextProps, this);
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
-
-    console.log('shouldComponentUpdate', nextProps, nextState);
-
     const oldId = this.state.total;
     const nextId = nextState.total;
     if (oldId !== nextId) {
@@ -49,15 +41,6 @@ class App extends React.Component {
       return false;
     }
   }
-
-  componentWillUpdate() {
-    console.log('componentWillUpdate', this);
-  }
-
-  componentDidUpdate() {
-    console.log('componentDidUpdate', this);
-  }
-
 
   handleSearch(value) {
     this.setState({ query: value });
@@ -75,7 +58,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('render', this);
     return (
       <Router>
         <div className="page">
@@ -95,7 +77,6 @@ class App extends React.Component {
 
                     <SearchArea onHandleSearch={this.handleSearch} />
                   </div>
-
                   <Route path='/film/:id' component={Movie} />
                 </div>
               </div>
@@ -134,4 +115,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render((<App />), document.getElementById('app'))
+ReactDOM.render((<Provider store={store}><App /></Provider>), document.getElementById('app'))

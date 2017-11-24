@@ -20,7 +20,8 @@ export default class ListMovies extends React.Component {
           this.props.moviesArr.map(function (el) {
             return (
             <div className="grid__item grid__item_4" key={el.id}>
-              <Link to={`/film/${el.id}`}>
+              <Link to={`/film/${el.id}`} onClick={()=>{console.log('movie-click', el.id)}}
+              >
                 <FilmBrief
                   poster={'https://image.tmdb.org/t/p/w500' + el.poster_path}
                   showTitle={el.title}
