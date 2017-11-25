@@ -60,15 +60,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       hash: true,
-      template: './client/src/index.html',
-      excludeChunks: ['search']
+      template: './client/src/index.html'
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'search.html',
-    //   hash: true,
-    //   template: './client/src/search.html',
-    //   excludeChunks: ['home']
-    // }),
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true

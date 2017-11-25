@@ -3,55 +3,19 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import App from './containers/App';
 import reducer from './reducers';
 
-const store = createStore(reducer, applyMiddleware(thunk));
-
-
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router >
+      <Route path='/' component={App} />
+    </Router>
   </Provider>,
   document.getElementById('app')
 );
-
-/*
-
- function playlist(state = [], action){
- console.log(action);
- if(action.type === 'ADD_TRACK'){
- return [
- ...state,
- action.payload
- ]
- }
- return state
- }
-
- const store = createStore(playlist);
-
- const addTrackButton = document.querySelectorAll('.addTrack')[0];
- const trackInput =  document.querySelectorAll('.trackInput')[0];
- const list = document.querySelectorAll('.list')[0];
-
-
- store.subscribe(() => {
- list.innerHTML = '';
- trackInput.value = '';
- store.getState().map(track => {
- const li = document.createElement('li');
- li.textContent = track;
- list.appendChild(li);
- });
- });
-
-
- addTrackButton.addEventListener('click', () =>{
- const trackName = trackInput.value;
- store.dispatch({ type: 'ADD_TRACK', payload: trackName});
-
- });
- */
