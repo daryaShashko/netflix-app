@@ -13,6 +13,10 @@ import  Movie  from './../containers/Movie.jsx';
 
 class App extends React.Component {
   render() {
+    console.log(this.props.store);
+    const movies = this.props.store.movies.sort((a, b) => ( b.release_date.replace(/-/g, '') - a.release_date.replace(/-/g, '')));
+    console.log(movies.map(item => item.release_date));
+
     return (
       <div className="page">
         <div className="page__wrapper">
@@ -50,7 +54,7 @@ class App extends React.Component {
 
             <div className="content-wrapper">
               <div className="grid">
-                {this.props.store.movies.map((item, index) =>(
+                {movies.map((item, index) =>(
                   <div className="grid__item grid__item_3" key={item.id}>
                     <Link to={`/film/${item.id}`}>
                       <FilmBrief
@@ -83,5 +87,7 @@ export default connect(
     store: state.films,
     routing: state.routing
   }),
-  dispatch => ({})
+  dispatch => ({
+
+  })
 )(App)
