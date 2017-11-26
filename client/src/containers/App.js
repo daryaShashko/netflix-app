@@ -7,15 +7,32 @@ import { LogoNetflix } from './../components/LogoNetflix.jsx';
 import { TextArea } from './../components/TextArea.jsx';
 import { HeadLine } from './../components/HeadLine.jsx';
 import { Button } from './../components/Button.jsx';
-import { SortArea } from './../components/SortArea.jsx';
+import  SortArea  from './../components/SortArea.jsx';
 import FilmBrief from './../components/FilmBrief.jsx';
 import  Movie  from './../containers/Movie.jsx';
 
 class App extends React.Component {
   render() {
+    let movies;
     console.log(this.props.store);
-    const movies = this.props.store.movies.sort((a, b) => ( b.release_date.replace(/-/g, '') - a.release_date.replace(/-/g, '')));
-    console.log(movies.map(item => item.release_date));
+
+    if(this.props.sort[0] === 'release date'){
+       movies = this.props.store.movies.sort(function (a, b) {
+        if (b.release_date == undefined || a.release_date == undefined) {
+          return false;
+        } else {
+          return ( b.release_date.replace(/-/g, '') - a.release_date.replace(/-/g, ''));
+        }
+      })
+    }else if(this.props.sort[0] === 'rating'){
+      movies = this.props.store.movies.sort(function (a, b) {
+        if (b.vote_average == undefined || a.vote_average == undefined) {
+          return false;
+        } else {
+          return ( Number(b.vote_average) - Number(a.vote_average));
+        }
+      });
+  };
 
     return (
       <div className="page">
@@ -60,7 +77,7 @@ class App extends React.Component {
                       <FilmBrief
                         poster={'https://image.tmdb.org/t/p/w500' + item.poster_path}
                         showTitle={item.title}
-                        releaseYear={item.release_date}/>
+                        releaseYear={(item.release_date == undefined) ? 'hz' : item.release_date}/>
                     </Link>
                   </div>
                 ))
@@ -85,9 +102,8 @@ class App extends React.Component {
 export default connect(
   state => ({
     store: state.films,
-    routing: state.routing
+    routing: state.routing,
+    sort: state.sort
   }),
-  dispatch => ({
-
-  })
+  dispatch => ({})
 )(App)

@@ -1,16 +1,95 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
+
 import {HeadLine} from './HeadLine.jsx';
 import {Input} from './Input.jsx';
 import {Button} from './Button.jsx';
 import PropTypes from 'prop-types';
 
-export const SortArea = (props) => (
-  <div className={'sort-area ' + props.className}>
-    <HeadLine className={props.headLineClass} text={props.headLineText}/>
-    <Button buttonType="button" className="button_active" text={props.firstCriterion}/>
-    <Button buttonType="button" text={props.secondCriterion}/>
-  </div>
-);
+class SortArea extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleClick(e){
+    this.toggleActive($(e.target));
+    switch(e.target.innerText.toLowerCase()){
+      case 'title':
+        this.props.changeSearchSorting('title');
+        console.log('find by title');
+        break;
+      case 'director':
+        this.props.changeSearchSorting('director');
+        console.log('find by director');
+        break;
+      case 'release date':
+        this.props.changeViewSorting('release date');
+        console.log('sort by release date');
+        break;
+      case'rating':
+        this.props.changeViewSorting('rating');
+        console.log('sort by rating');
+        break;
+      default:
+        break;
+    }
+  }
+
+  makeActive(element){
+    element.addClass('button_active');
+    element.data('active', true);
+  }
+
+  removeActive(element){
+    element.removeClass('button_active');
+    element.data('active', false);
+  }
+
+  toggleActive(element){
+    const self = this;
+    const container = element.closest('.sort-area');
+    const nearestActive = container.find('.button_active')[0];
+
+    if(!element.data('active')){
+      this.makeActive(element);
+      if(nearestActive !== $(element)[0]){
+        self.removeActive($(nearestActive));
+      }
+    }else {
+      this.removeActive(element);
+    }
+  }
+
+  render() {
+    return (
+      <div className={'sort-area ' + this.props.className}>
+        <HeadLine className={this.props.headLineClass} text={this.props.headLineText}/>
+        <button type="button" className="button button_active"
+                onClick={::this.handleClick}>{this.props.firstCriterion}</button>
+        <button type="button" className="button" onClick={::this.handleClick}>{this.props.secondCriterion}</button>
+      </div>
+    )
+  }
+}
+
+
+export default connect(
+  state => ({
+    sort: state.sort,
+    search: state.search
+  }),
+  dispatch => ({
+    changeSearchSorting: (sortValue) => {
+      dispatch({ type: 'SEARCH_BY', sortValue: sortValue });
+    },
+    changeViewSorting: (sortValue) => {
+      dispatch({ type: 'SORT_BY', sortValue: sortValue });
+    }
+  })
+)(SortArea)
+
 
 SortArea.defaultProps = {
   className: '',
@@ -21,9 +100,9 @@ SortArea.defaultProps = {
 };
 
 SortArea.propTypes = {
-  className:  PropTypes.string,
-  headLineClass:  PropTypes.string,
-  headLineText:  PropTypes.string,
-  firstCriterion:  PropTypes.string,
-  secondCriterion:  PropTypes.string
+  className: PropTypes.string,
+  headLineClass: PropTypes.string,
+  headLineText: PropTypes.string,
+  firstCriterion: PropTypes.string,
+  secondCriterion: PropTypes.string
 };

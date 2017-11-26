@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getFilms } from './../actions/films.js';
+import { getFilmsByTitle, getFilmsByDirector } from './../actions/films.js';
 
 import { HeadLine } from './../components/HeadLine.jsx';
 import { Button } from './../components/Button.jsx';
-import { SortArea } from './../components/SortArea.jsx';
+import  SortArea  from './../components/SortArea.jsx';
 
 class SearchArea extends React.Component {
 
   findFilms() {
-    this.props.onFindFilms(this.findInput.value);
+    this.props.onFindFilms(this.findInput.value, this.props.search[0]);
     this.findInput.value ='';
   }
 
@@ -43,11 +43,19 @@ class SearchArea extends React.Component {
 export default connect(
   state => ({
     store: state.films,
-    query: state.query
+    query: state.query,
+    search: state.search,
+    sort: state.sort
   }),
   dispatch => ({
-    onFindFilms: (query) => {
-      dispatch(getFilms(query));
+    onFindFilms: (query, sortValue) => {
+      if(sortValue === 'title'){
+        console.log('------------- by title');
+        dispatch(getFilmsByTitle(query));
+      }else if(sortValue === 'director'){
+        console.log('------------- by director');
+        dispatch(getFilmsByDirector(query));
+      }
     },
     changeQuery: (query) => {
       dispatch({ type: 'CHANGE_QUERY', query: query });
