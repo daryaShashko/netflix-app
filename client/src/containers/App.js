@@ -10,30 +10,10 @@ import { Button } from './../components/Button.jsx';
 import  SortArea  from './../components/SortArea.jsx';
 import FilmBrief from './../components/FilmBrief.jsx';
 import  Movie  from './../containers/Movie.jsx';
+import  Movies  from './../containers/Movies.jsx';
 
 class App extends React.Component {
   render() {
-    let movies;
-    console.log(this.props.store);
-
-    if(this.props.sort[0] === 'release date'){
-       movies = this.props.store.movies.sort(function (a, b) {
-        if (b.release_date == undefined || a.release_date == undefined) {
-          return false;
-        } else {
-          return ( b.release_date.replace(/-/g, '') - a.release_date.replace(/-/g, ''));
-        }
-      })
-    }else if(this.props.sort[0] === 'rating'){
-      movies = this.props.store.movies.sort(function (a, b) {
-        if (b.vote_average == undefined || a.vote_average == undefined) {
-          return false;
-        } else {
-          return ( Number(b.vote_average) - Number(a.vote_average));
-        }
-      });
-  };
-
     return (
       <div className="page">
         <div className="page__wrapper">
@@ -71,17 +51,7 @@ class App extends React.Component {
 
             <div className="content-wrapper">
               <div className="grid">
-                {movies.map((item, index) =>(
-                  <div className="grid__item grid__item_3" key={item.id}>
-                    <Link to={`/film/${item.id}`}>
-                      <FilmBrief
-                        poster={'https://image.tmdb.org/t/p/w500' + item.poster_path}
-                        showTitle={item.title}
-                        releaseYear={(item.release_date == undefined) ? 'hz' : item.release_date}/>
-                    </Link>
-                  </div>
-                ))
-                }
+               <Movies />
               </div>
 
             </div>

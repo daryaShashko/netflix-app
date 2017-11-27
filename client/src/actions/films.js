@@ -21,3 +21,31 @@ export const getFilmsByDirector = (query) => dispatch => {
     });
   });
 };
+
+export const sortByDate = (moviesArr) => {
+  const sortingMovies = moviesArr.sort(function (a, b) {
+    if (b.release_date == undefined || a.release_date == undefined) {
+      return false;
+    } else {
+      return ( b.release_date.replace(/-/g, '') - a.release_date.replace(/-/g, ''));
+    }
+  });
+  return {
+    type: 'FETCH_FIND_FILMS_SUCCESS',
+    movies: sortingMovies
+  };
+};
+
+export const sortByRating = (moviesArr) => {
+  const sortingMovies = moviesArr.sort(function (a, b) {
+    if (b.vote_average == undefined || a.vote_average == undefined) {
+      return false;
+    } else {
+      return ( Number(b.vote_average) - Number(a.vote_average));
+    }
+  });
+  return {
+    type: 'FETCH_FIND_FILMS_SUCCESS',
+    movies: sortingMovies
+  }
+};

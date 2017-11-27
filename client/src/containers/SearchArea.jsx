@@ -50,10 +50,8 @@ export default connect(
   dispatch => ({
     onFindFilms: (query, sortValue) => {
       if(sortValue === 'title'){
-        console.log('------------- by title');
         dispatch(getFilmsByTitle(query));
       }else if(sortValue === 'director'){
-        console.log('------------- by director');
         dispatch(getFilmsByDirector(query));
       }
     },

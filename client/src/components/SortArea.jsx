@@ -18,19 +18,15 @@ class SortArea extends React.Component {
     switch(e.target.innerText.toLowerCase()){
       case 'title':
         this.props.changeSearchSorting('title');
-        console.log('find by title');
         break;
       case 'director':
         this.props.changeSearchSorting('director');
-        console.log('find by director');
         break;
       case 'release date':
         this.props.changeViewSorting('release date');
-        console.log('sort by release date');
         break;
       case'rating':
         this.props.changeViewSorting('rating');
-        console.log('sort by rating');
         break;
       default:
         break;
