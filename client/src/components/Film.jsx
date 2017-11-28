@@ -45,13 +45,13 @@ Film.defaultProps = {
 };
 
 Film.propTypes = {
-  poster: PropTypes.string,
-  showTitle: PropTypes.string,
-  rating: PropTypes.string,
-  releaseYear: PropTypes.string,
-  runtime: PropTypes.string,
-  category: PropTypes.string,
-  summary: PropTypes.string,
-  director: PropTypes.string,
-  showCast: PropTypes.string,
+  poster: PropTypes.any,
+  showTitle: PropTypes.any,
+  rating: PropTypes.any,
+  releaseYear: PropTypes.any,
+  runtime: PropTypes.any,
+  category: PropTypes.any,
+  summary: PropTypes.any,
+  director: PropTypes.any,
+  showCast: PropTypes.any,
 };

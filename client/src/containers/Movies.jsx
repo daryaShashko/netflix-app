@@ -6,14 +6,14 @@ import { sortByDate, sortByRating } from './../actions/films.js';
 
 import FilmBrief from './../components/FilmBrief.jsx';
 
-class Movies extends React.Component {
+export class Movies extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
-    if (this.props.sort[0] !== 'undefined' && this.props.movies.length !== 'undefined') {
+    if (this.props.sort[0] !== 'undefined' && this.props.totalResults > 0) {
       switch (this.props.sort[0]) {
         case 'release date':
           sortByDate(this.props.movies);
@@ -29,6 +29,7 @@ class Movies extends React.Component {
     }
     return (
       <div className="grid">
+
         {this.props.movies.map((item, index) =>(
         <div className="grid__item grid__item_3" key={item.id}>
           <Link to={`/film/${item.id}`}>
@@ -48,7 +49,8 @@ class Movies extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     sort: state.sort,
-    movies: state.films.movies
+    movies: state.films.movies,
+    totalResults: state.films.totalResults
   }
 };
 

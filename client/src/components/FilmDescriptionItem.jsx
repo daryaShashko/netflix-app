@@ -11,6 +11,6 @@ FilmDescriptionItem.defaultProps = {
 };
 
 FilmDescriptionItem.propTypes = {
-  className:  PropTypes.string,
-  text:  PropTypes.string
+  className:  PropTypes.any,
+  text:  PropTypes.any
 };

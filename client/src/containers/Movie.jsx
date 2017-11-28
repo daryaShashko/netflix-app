@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Film from './../components/Film.jsx';
 
-class Movie extends React.Component {
+export class Movie extends React.Component {
   render() {
     return (
       <div className="grid__item grid__item_12" key={this.props.movie.id}>

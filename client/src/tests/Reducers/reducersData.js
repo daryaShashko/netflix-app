@@ -155,7 +155,7 @@ export default
       id: 341244,
       video: false,
       vote_average: 8.1,
-      title: 'A Movie Life',
+      title: 'A Film Life',
       popularity: 5.572763,
       poster_path: '/tZ544US8qblE1saWrvbH2U17vUD.jpg',
       original_language: 'pt',
