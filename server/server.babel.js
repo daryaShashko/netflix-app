@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import handleRender from './client/src/server/handleRender.js';
+import handleRender from './../client/src/server/handleRender.js';
 
 const app = express();
 
