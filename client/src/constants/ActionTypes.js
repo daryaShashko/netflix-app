@@ -1,4 +1,2 @@
 export const FETCH_FIND_FILMS_SUCCESS = 'FETCH_FIND_FILMS_SUCCESS';
 export const SEARCH_BY = 'SEARCH_BY';
-export const SELECT_FILM = 'SELECT_FILM';
-export const SORT_BY_RELEASE = 'SORT_BY_RELEASE';

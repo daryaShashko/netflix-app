@@ -1,35 +1,59 @@
-import React from 'react';
-import Movies from './../../containers/Movies.jsx';
-import reducersData from './reducersData';
-import configureStore from 'redux-mock-store';
-import ShallowRenderer from 'react-test-renderer/shallow';
+/* eslint no-undef:0 */
+import reducers  from '../../reducers';
+import * as types from '../../constants/ActionTypes';
 
 
-import reducers from '../../reducers';
+describe('films reducers', () => {
 
-test('reducers', () => {
-  let state;
-  state = reducers(
-    {
-      routing: {locationBeforeTransitions: null},
-      films: {movies: [], totalResults: 0},
-      query: 'da',
-      search: ['title'],
-      sort: ['release date']
-    },
-    {
-      type: 'FETCH_FIND_FILMS_SUCCESS',
-      movies: reducersData,
-      totalResults: 22395
-    });
-  expect(state).toEqual({
-    routing: {locationBeforeTransitions: null},
-    films: {
-      movies: reducersData,
-      totalResults: 22395
-    },
-    query: 'da',
-    search: ['title'],
-    sort: ['release date']
+  it('fetchFilmsSuccess should return initial state', () => {
+    expect(reducers(undefined, {})).toEqual({
+      "films": {
+        "movies": [],
+        "totalResults": 0
+      },
+      "query": [],
+      "routing": {"locationBeforeTransitions": null},
+      "search": ["title"],
+      "sort": ["release date"]
+    })
   });
+
+  it('changeQuery should return initial state', () => {
+    expect(reducers(undefined, {})).toEqual({
+      "films": {
+        "movies": [],
+        "totalResults": 0
+      },
+      "query": [],
+      "routing": {"locationBeforeTransitions": null},
+      "search": ["title"],
+      "sort": ["release date"]
+    });
+  });
+
+  it(`changeSearchBy should handle ${types.SEARCH_BY}`, () => {
+    expect(
+      reducers({
+        "films": {
+          "movies": [],
+          "totalResults": 0
+        },
+        "query": [],
+        "routing": {"locationBeforeTransitions": null},
+        "search": ["title"],
+        "sort": ["release date"]
+      },
+        {type: types.SEARCH_BY, sortValue: 'director'})
+    ).toEqual({
+      "films": {
+        "movies": [],
+        "totalResults": 0
+      },
+      "query": [],
+      "routing": {"locationBeforeTransitions": null},
+      "search": ["director"],
+      "sort": ["release date"]
+    });
+  });
+
 });
