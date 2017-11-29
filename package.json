@@ -7,7 +7,10 @@
     "webpack-watch": "webpack --progress",
     "express-server": "node ./server/server.js",
     "dev": "concurrent --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
-    "test": "jest"
+    "test": "jest",
+    "build-dev": "SET NODE_ENV=development && webpack",
+    "build-prod": "SET NODE_ENV=production && webpack",
+    "start": "webpack && node node ./server/server.js"
   },
   "jest": {
     "moduleDirectories": [
@@ -65,7 +68,8 @@
     "superagent": "^3.6.3",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
     "axios": "^0.17.1",

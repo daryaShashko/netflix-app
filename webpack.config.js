@@ -27,10 +27,10 @@ module.exports = {
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'less-loader']
-          })
-        },
+          fallback: 'style-loader',
+          use: ['css-loader', 'less-loader']
+        })
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -41,7 +41,7 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-        'file-loader'
+          'file-loader'
         ]
       }
     ]
@@ -65,6 +65,11 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
     })
   ],
   watch: true
