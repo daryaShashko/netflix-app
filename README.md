@@ -6,8 +6,3 @@ There will be two pages: main page with search and a page with a particular film
 npm i
 npm run dev
 ```
-
-Для сброса данных в базе:
-```
-npm run reset-db
-```
