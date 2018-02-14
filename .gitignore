@@ -2,5 +2,4 @@
 .gitignore
 /.idea
 /node_modules
-/public
 /server/npm-debug.log

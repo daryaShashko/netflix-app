@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movies component should render 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "lno0mq",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "lno0mq",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Movies
+      movies={
+        Array [
+          Object {
+            "category": "Action",
+            "id": 0,
+            "overview": "Really great film!",
+            "poster_path": "/path/to/poster1",
+            "release_date": "2007-02-03",
+            "runtime": 96,
+            "title": "Title1",
+            "vote_average": 4.7,
+          },
+          Object {
+            "category": "Action",
+            "id": 1,
+            "overview": "Really great film!!1",
+            "poster_path": "/path/to/poster2",
+            "release_date": "2004-02-01",
+            "runtime": 94,
+            "title": "Title2",
+            "vote_average": 4.4,
+          },
+        ]
+      }
+      search={
+        Array [
+          "title",
+        ]
+      }
+      sort={
+        Array [
+          "release date",
+        ]
+      }
+      totalResults={2}
+    >
+      <div
+        className="grid"
+      >
+        <div
+          className="grid__item grid__item_3"
+          key="0"
+        >
+          <Link
+            replace={false}
+            to="/film/0"
+          >
+            <a
+              href="/film/0"
+              onClick={[Function]}
+            >
+              <FilmBrief
+                category="Horror"
+                poster="https://image.tmdb.org/t/p/w500/path/to/poster1"
+                releaseYear="2007-02-03"
+                showTitle="Title1"
+              >
+                <div
+                  className="media-show media-show_brief"
+                >
+                  <div
+                    className="media-show__description"
+                  >
+                    <FilmPoster
+                      poster="https://image.tmdb.org/t/p/w500/path/to/poster1"
+                      showTitle="Batman"
+                      show_title="Title1"
+                    >
+                      <div
+                        className="media-show__poster"
+                      >
+                        <img
+                          alt="Batman"
+                          src="https://image.tmdb.org/t/p/w500/path/to/poster1"
+                        />
+                      </div>
+                    </FilmPoster>
+                    <header
+                      className="media-show__header"
+                    >
+                      <FilmDescriptionItem
+                        className="media-show__title"
+                        text="Title1"
+                      >
+                        <span
+                          className="media-show__title"
+                        >
+                          Title1
+                        </span>
+                      </FilmDescriptionItem>
+                      <FilmDescriptionItem
+                        className="media-show__release-year"
+                        text="2007-02-03"
+                      >
+                        <span
+                          className="media-show__release-year"
+                        >
+                          2007-02-03
+                        </span>
+                      </FilmDescriptionItem>
+                      <FilmDescriptionItem
+                        className="media-show__category"
+                        text="Horror"
+                      >
+                        <span
+                          className="media-show__category"
+                        >
+                          Horror
+                        </span>
+                      </FilmDescriptionItem>
+                    </header>
+                  </div>
+                </div>
+              </FilmBrief>
+            </a>
+          </Link>
+        </div>
+        <div
+          className="grid__item grid__item_3"
+          key="1"
+        >
+          <Link
+            replace={false}
+            to="/film/1"
+          >
+            <a
+              href="/film/1"
+              onClick={[Function]}
+            >
+              <FilmBrief
+                category="Horror"
+                poster="https://image.tmdb.org/t/p/w500/path/to/poster2"
+                releaseYear="2004-02-01"
+                showTitle="Title2"
+              >
+                <div
+                  className="media-show media-show_brief"
+                >
+                  <div
+                    className="media-show__description"
+                  >
+                    <FilmPoster
+                      poster="https://image.tmdb.org/t/p/w500/path/to/poster2"
+                      showTitle="Batman"
+                      show_title="Title2"
+                    >
+                      <div
+                        className="media-show__poster"
+                      >
+                        <img
+                          alt="Batman"
+                          src="https://image.tmdb.org/t/p/w500/path/to/poster2"
+                        />
+                      </div>
+                    </FilmPoster>
+                    <header
+                      className="media-show__header"
+                    >
+                      <FilmDescriptionItem
+                        className="media-show__title"
+                        text="Title2"
+                      >
+                        <span
+                          className="media-show__title"
+                        >
+                          Title2
+                        </span>
+                      </FilmDescriptionItem>
+                      <FilmDescriptionItem
+                        className="media-show__release-year"
+                        text="2004-02-01"
+                      >
+                        <span
+                          className="media-show__release-year"
+                        >
+                          2004-02-01
+                        </span>
+                      </FilmDescriptionItem>
+                      <FilmDescriptionItem
+                        className="media-show__category"
+                        text="Horror"
+                      >
+                        <span
+                          className="media-show__category"
+                        >
+                          Horror
+                        </span>
+                      </FilmDescriptionItem>
+                    </header>
+                  </div>
+                </div>
+              </FilmBrief>
+            </a>
+          </Link>
+        </div>
+      </div>
+    </Movies>
+  </Router>
+</MemoryRouter>
+`;

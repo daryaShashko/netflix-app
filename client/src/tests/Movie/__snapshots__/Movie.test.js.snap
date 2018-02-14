@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie component should render 1`] = `
+<Movie
+  movie={
+    Object {
+      "id": 0,
+      "overview": "Really great film!",
+      "poster_path": "/path/to/poster1",
+      "release_date": "2007-02-03",
+      "runtime": 96,
+      "title": "Title1",
+      "vote_average": 4.7,
+    }
+  }
+>
+  <div
+    className="grid__item grid__item_12"
+    key="0"
+  >
+    <Film
+      category="Horror"
+      director="director,"
+      poster="https://image.tmdb.org/t/p/w500/path/to/poster1"
+      rating={4.7}
+      releaseYear="2007-02-03"
+      runtime={96}
+      showCast="showCast"
+      showTitle="Title1"
+      summary="Really great film!"
+    >
+      <div
+        className="media-show"
+      >
+        <div
+          className="media-show__wrapper"
+        >
+          <FilmPoster
+            poster="https://image.tmdb.org/t/p/w500/path/to/poster1"
+            showTitle="Batman"
+            show_title="Title1"
+          >
+            <div
+              className="media-show__poster"
+            >
+              <img
+                alt="Batman"
+                src="https://image.tmdb.org/t/p/w500/path/to/poster1"
+              />
+            </div>
+          </FilmPoster>
+          <div
+            className="media-show__description"
+          >
+            <header
+              className="media-show__header"
+            >
+              <FilmDescriptionItem
+                className="media-show__title"
+                text="Title1"
+              >
+                <span
+                  className="media-show__title"
+                >
+                  Title1
+                </span>
+              </FilmDescriptionItem>
+              <FilmDescriptionItem
+                className="media-show__rating"
+                text={4.7}
+              >
+                <span
+                  className="media-show__rating"
+                >
+                  4.7
+                </span>
+              </FilmDescriptionItem>
+              <FilmDescriptionItem
+                className="media-show__category"
+                text="Horror"
+              >
+                <span
+                  className="media-show__category"
+                >
+                  Horror
+                </span>
+              </FilmDescriptionItem>
+              <FilmDescriptionItem
+                className="media-show__release-year"
+                text="2007-02-03"
+              >
+                <span
+                  className="media-show__release-year"
+                >
+                  2007-02-03
+                </span>
+              </FilmDescriptionItem>
+              <FilmDescriptionItem
+                className="media-show__runtime"
+                text={96}
+              >
+                <span
+                  className="media-show__runtime"
+                >
+                  96
+                </span>
+              </FilmDescriptionItem>
+            </header>
+            <FilmDescriptionItem
+              className="media-show__summary"
+              text="Really great film!"
+            >
+              <span
+                className="media-show__summary"
+              >
+                Really great film!
+              </span>
+            </FilmDescriptionItem>
+            <footer
+              className="media-show__footer"
+            >
+              <FilmDescriptionItem
+                className="media-show__director"
+                text="Director: director,"
+              >
+                <span
+                  className="media-show__director"
+                >
+                  Director: director,
+                </span>
+              </FilmDescriptionItem>
+              <FilmDescriptionItem
+                className="media-show__cast"
+                text="Cast: showCast"
+              >
+                <span
+                  className="media-show__cast"
+                >
+                  Cast: showCast
+                </span>
+              </FilmDescriptionItem>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </Film>
+  </div>
+</Movie>
+`;

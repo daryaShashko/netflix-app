@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Film component should render 1`] = `
+<Film
+  category="Horror"
+  director="director,"
+  movie={
+    Object {
+      "category": "Action",
+      "poster": "/path/to/poster",
+      "releaseYear": "2007-02-03",
+      "showTitle": "Title",
+    }
+  }
+  poster=""
+  rating="3.5"
+  releaseYear="2017"
+  runtime="345"
+  showCast="showCast"
+  showTitle="Button"
+  summary="summary"
+>
+  <div
+    className="media-show"
+  >
+    <div
+      className="media-show__wrapper"
+    >
+      <FilmPoster
+        poster=""
+        showTitle="Batman"
+        show_title="Button"
+      >
+        <div
+          className="media-show__poster"
+        >
+          <img
+            alt="Batman"
+            src=""
+          />
+        </div>
+      </FilmPoster>
+      <div
+        className="media-show__description"
+      >
+        <header
+          className="media-show__header"
+        >
+          <FilmDescriptionItem
+            className="media-show__title"
+            text="Button"
+          >
+            <span
+              className="media-show__title"
+            >
+              Button
+            </span>
+          </FilmDescriptionItem>
+          <FilmDescriptionItem
+            className="media-show__rating"
+            text="3.5"
+          >
+            <span
+              className="media-show__rating"
+            >
+              3.5
+            </span>
+          </FilmDescriptionItem>
+          <FilmDescriptionItem
+            className="media-show__category"
+            text="Horror"
+          >
+            <span
+              className="media-show__category"
+            >
+              Horror
+            </span>
+          </FilmDescriptionItem>
+          <FilmDescriptionItem
+            className="media-show__release-year"
+            text="2017"
+          >
+            <span
+              className="media-show__release-year"
+            >
+              2017
+            </span>
+          </FilmDescriptionItem>
+          <FilmDescriptionItem
+            className="media-show__runtime"
+            text="345"
+          >
+            <span
+              className="media-show__runtime"
+            >
+              345
+            </span>
+          </FilmDescriptionItem>
+        </header>
+        <FilmDescriptionItem
+          className="media-show__summary"
+          text="summary"
+        >
+          <span
+            className="media-show__summary"
+          >
+            summary
+          </span>
+        </FilmDescriptionItem>
+        <footer
+          className="media-show__footer"
+        >
+          <FilmDescriptionItem
+            className="media-show__director"
+            text="Director: director,"
+          >
+            <span
+              className="media-show__director"
+            >
+              Director: director,
+            </span>
+          </FilmDescriptionItem>
+          <FilmDescriptionItem
+            className="media-show__cast"
+            text="Cast: showCast"
+          >
+            <span
+              className="media-show__cast"
+            >
+              Cast: showCast
+            </span>
+          </FilmDescriptionItem>
+        </footer>
+      </div>
+    </div>
+  </div>
+</Film>
+`;
